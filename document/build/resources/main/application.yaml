@@ -1,0 +1,21 @@
+server:
+  port: 8082
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: user
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: test
+
+jwt:
+  secret: JNAxbce2MTsB5nX2
+  ttl: 8640000000 #100 day
+  subject: wps-auth
+  keys:
+    user: user
+    roles: roles
+    name: name

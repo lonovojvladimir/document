@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;MODE=Oracle;DB_CLOSE_DELAY=-1
+    username: wpsuser
+    password: wpsuser
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: ${SHOW_SQL:true}
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+  messages:
+    basename: messages/error
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    root: INFO
+    #org.springframework.orm.jpa: DEBUG
+    #org.springframework.transaction: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+jwt:
+  secret: JNAxbce2MTsB5nX2
+  ttl: 8640000000 #100 day
+  subject: wps-auth
+  keys:
+    user: user
+    roles: roles
+    name: name

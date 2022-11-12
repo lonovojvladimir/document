@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.com.document'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    implementation 'org.springframework:spring-web:5.3.9'
+
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-core:9.0.50'
+
+}

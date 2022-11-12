@@ -1,0 +1,20 @@
+create sequence DICT_SEQUENCE minvalue 1000;
+
+CREATE TABLE DICT
+(
+    ID           NUMBER(10,0),
+    DICT_TYPE    VARCHAR2(255) NOT NULL,
+    CODE         VARCHAR2(255) NOT NULL,
+    NAME         VARCHAR2(255),
+    HIDE         NUMBER(1),
+
+    CREATED      DATE,
+    CREATOR      VARCHAR2(100),
+    UPDATED      DATE,
+    UPDATER      VARCHAR2(100),
+
+    PRIMARY KEY (ID),
+    CONSTRAINT type_code UNIQUE (DICT_TYPE, CODE)
+);
+
+CREATE INDEX dict_type ON DICT (DICT_TYPE);
