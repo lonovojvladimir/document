@@ -1,0 +1,67 @@
+server:
+  port: 8087
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: admin
+    password: admin
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/demo
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  mvc:
+    servlet:
+      path: /api
+
+services:
+  s3:
+    endpoint: http://localhost:9000
+    accessKey: minioadmin
+    secretKey: minioadmin
+    bucketName: documents
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    display-request-duration: true
+
+user-service:
+  host: localhost
+  port: 8088
+
+keycloak:
+  auth-server-url: http://localhost:8080
+  realm: demo
+  resource: spring-app
+  credentials:
+    secret: UOwPm55xfvW0NarkkL4DW6KSLJvZMHcR
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
+#    org.springframework.web.reactive.function.client.ExchangeFunctions: DEBUG
